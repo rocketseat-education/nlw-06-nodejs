@@ -1,0 +1,57 @@
+{
+  "name": "@sqltools/formatter",
+  "version": "1.2.3",
+  "description": "Formats SQL queries. Part of SQLTools",
+  "license": "MIT",
+  "main": "./lib/sqlFormatter.js",
+  "types": "./lib/sqlFormatter.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "sql",
+    "formatter",
+    "format",
+    "n1ql",
+    "whitespaces",
+    "sqltools"
+  ],
+  "authors": [
+    "Matheus Teixeira <matheus@mteixeira.dev>"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "rimraf lib dist *.tgz",
+    "test": "jest --config jest.config.js",
+    "test:watch": "yarn run test -- --watch",
+    "check": "yarn run test",
+    "precompile": "yarn run check && yarn run clean",
+    "compile": "./node_modules/.bin/tsc -p tsconfig.json",
+    "build": "yarn run compile",
+    "prepare": "yarn run build",
+    "prepack": "yarn run build",
+    "release": "npm pack && npm publish *.tgz --tag latest --access public",
+    "beta": "npm pack && npm publish *.tgz --tag beta --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mtxr/vscode-sqltools.git",
+    "directory": "packages/formatter"
+  },
+  "bugs": {
+    "url": "https://github.com/mtxr/vscode-sqltools/labels/formatting"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "dedent-js": "^1.0.1",
+    "jest": "^24.7.0",
+    "jest-cli": "^24.7.0",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.0.1",
+    "typescript": "^3.4.1"
+  }
+}
